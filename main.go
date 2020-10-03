@@ -92,6 +92,14 @@ func main() {
 		"     ",
 	}
 
+	blank := [5]string{
+		"     ",
+		"     ",
+		"     ",
+		"     ",
+		"     ",
+	}
+
 	for {
 		timeNow := time.Now()
 		var timeAsString = fmt.Sprintf("%02d", timeNow.Hour()) + fmt.Sprintf("%02d", timeNow.Minute()) + fmt.Sprintf("%02d", timeNow.Second())
@@ -103,7 +111,12 @@ func main() {
 				fmt.Printf("%s	", digits[val][i])
 
 				if 1 == j%2 && j < (len(timeAsArray)-1) {
-					fmt.Printf("%s	", delimeter[i])
+					lastIndexValue, _ := strconv.Atoi(timeAsArray[len(timeAsArray)-1])
+					if lastIndexValue%2 == 0 {
+						fmt.Printf("%s	", delimeter[i])
+					} else {
+						fmt.Printf("%s	", blank[i])
+					}
 				}
 
 			}
