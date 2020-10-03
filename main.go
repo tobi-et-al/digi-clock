@@ -11,71 +11,73 @@ import (
 
 func main() {
 
-	var digits = [...][5]string{
-		[5]string{
+	type placeholder [5]string
+
+	var digits = [...]placeholder{
+		placeholder{
 			"██████",
 			"█    █",
 			"█    █",
 			"█    █",
 			"██████",
 		},
-		[5]string{
+		placeholder{
+			" ██  ",
 			"  █  ",
-			"  ███",
 			"  █  ",
 			"  █  ",
-			"██████",
+			"█████",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"     █",
 			"██████",
-			"█   ",
+			"█     ",
 			"██████",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"     █",
-			"   ███",
+			"██████",
 			"     █",
 			"██████",
 		},
-		[5]string{
-			"    █ ",
-			"  █ █ ",
-			" █  █ ",
+		placeholder{
+			"█    █",
+			"█    █",
 			"██████",
-			"    █ ",
+			"     █",
+			"     █",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"█     ",
 			"██████",
 			"     █",
 			"██████ ",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"█     ",
 			"██████",
 			"█    █",
 			"██████ ",
 		},
-		[5]string{
+		placeholder{
 			"██████",
-			"    █ ",
-			"   █  ",
-			"  █   ",
-			" █    ",
+			"     █",
+			"     █",
+			"     █",
+			"     █",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"█    █",
 			"██████",
 			"█    █",
 			"██████ ",
 		},
-		[5]string{
+		placeholder{
 			"██████",
 			"█    █",
 			"██████",
@@ -84,7 +86,7 @@ func main() {
 		},
 	}
 
-	delimeter := [5]string{
+	delimeter := placeholder{
 		"     ",
 		"  ▒  ",
 		"     ",
@@ -92,7 +94,7 @@ func main() {
 		"     ",
 	}
 
-	blank := [5]string{
+	blank := placeholder{
 		"     ",
 		"     ",
 		"     ",
@@ -105,6 +107,7 @@ func main() {
 		var timeAsString = fmt.Sprintf("%02d", timeNow.Hour()) + fmt.Sprintf("%02d", timeNow.Minute()) + fmt.Sprintf("%02d", timeNow.Second())
 		timeAsArray := strings.Split(timeAsString, "")
 		fmt.Printf("\n")
+
 		for i := 0; i < len(digits[0]); i++ {
 			for j, val := range timeAsArray {
 				val, _ := strconv.Atoi(val)
